@@ -1,102 +1,154 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-canvas{
-  position:fixed;
-  top: 0;
-  left: 0;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* NEW FILE */
+body, html {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
+  height: 100%;
+  font-family: 'Kanit', sans-serif; 
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* New class for thin font weight */
+.kanit-thin {
+  font-weight: 100;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#threejs-container {
+  position: absolute;
+  top: 50px; /* Adjust as needed to the height of your nav bar */
+  left: 0;
+  width: 100%; /* Adjust as needed */
+  height: calc(100% - 50px); /* Adjust as needed to the height of your nav bar */
+}
+
+:root {
+  --offset-right: 0px; /* Default value, will be overwritten */
+}
+
+#rB {
+  position: absolute;
+  bottom: 20%;
+  right: 25%;
+  transform: translateY(-50%);
+  z-index: 99999;
+}
+
+#lB {
+  position: absolute;
+  bottom: 20%;
+  left: 25%;
+  transform: translateY(-50%);
+  z-index: 99999;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Make the banner fixed at the top */
+  top: 0;
+  width: 100%;
+  z-index: 10000; /* Ensure the nav bar is above other elements */
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+li a:hover {
+  background-color: #111;
+} /* Change the link color to #111 (black) on hover */
+
+#planetName {
+  position: absolute;
+  bottom: 15%; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 500%;
+  z-index: 10001;
+  max-width: 200%;
+  white-space: nowrap;
 }
 
-.card {
-  padding: 2em;
+#planetDesc {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 200%;
+  z-index: 10001;
+  max-width: 200%;
+  white-space: nowrap;
 }
 
-.read-the-docs {
-  color: #888;
+#overview {
+  position: absolute;
+  top: 50px;
+  right: 10%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 25px;
+  z-index: 10002; /* Ensure it's above other elements */
+  text-decoration: underline;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+#overviewDesc {
+  position: absolute;
+  top: 85px;
+  right: 1%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 150%;
+  z-index: 10001; /* Ensure it's above other elements */
+  max-width: 35%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+#skills {
+  position: absolute;
+  bottom: 250px;
+  left: 8%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 25px;
+  z-index: 10002; /* Ensure it's above other elements */
+  text-decoration: underline;
+}
+
+#skillList {
+  position: absolute;
+  bottom: 175px;
+  left: 1%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 25px;
+  z-index: 101; 
+  max-width: 25%;
+}
+
+.trailers {
+  position: fixed;
+  top: 15%; 
+  left: 5%; 
+  width: 15%; 
+  height: auto; /* Maintain aspect ratio */
+  z-index: -100; 
 }
